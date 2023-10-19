@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/bootstrap-5.0.2/dist/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+   <style>
+    body{
+        background-image: linear-gradient(60deg,rgb(37, 37, 230),cyan);
+    }
+  
+    .col,.col-5{
+
+        background: rega(0,0,0,0.8);
+        backdrop-filter: saturate(180%) blur(10px);
+        border: 2px solid ;
+        border: none;
+
+    }
+    h1,p,h6,h5{
+        color: #fff;
+        letter-spacing: 1px;
+    }
+    section{
+        margin-bottom: 50px;
+        
+    }
+
+    h6,h5,p{
+        text-transform:uppercase ;
+        margin-top: 15px;
+    }
+    p{
+        font-size: 14px;
+    }
+    img{
+        width: 60px;
+        margin-bottom: 60px;
+        margin-top: 20px;
+    }
+    p{
+        margin: 0 
+    }
+    p:last-child{
+        margin-bottom: 10px;
+    }
+
+ 
+
+
+   </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center ">
+            <h1>Weather teamplate</h1>
+
+        </div>
+        <section class="row gap-5 justify-content-center">
+            <div class="col-5 text-center">
+                <h5 class="border-bottom pb-3">local weather report</h5>
+                <div class="row">
+                    <div class="col-7">
+                        <img id="current-img" src="./assets/images/Forecast/sun.png" alt="">                        
+                    </div>
+                    <div class="col-4">
+                        <h6 id="current-day"> sunday</h6>
+                        <p class="current-day">sunday</p>                    
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                        <p>14  KM/H SW</p>
+                        </div>
+                        <div class="col-4">
+                        <p>22ْ C</p>
+                        <p>71.6 ْ F</p>
+                        </div>
+                        
+                    </div>
+                </div>          
+            </div>
+            
+            <div class="col-5 text-center">
+                <h5 class="border-bottom pb-3">Sea forecast repor</h5>
+                <div class="col-7">
+
+                </div>
+            </div>
+        </section>
+
+        <section class="row ">
+            <div class="col text-center border-end">
+                <h6 class="other-dayes">monday</h6>
+                <img class="other-imgs" src="./assets/images/Forecast/SunCloud.png" alt="">
+
+                <div class="row">
+                    <p>22ْ C</p>
+                    <p>71.6 ْ F</p>
+                </div>
+            </div>
+
+            <div class="col text-center border-end">
+                <h6 class="other-dayes">tuseday</h6>
+                <img class="other-imgs" src="./assets/images/Forecast/Cloud.png" alt="">
+                <div class="row">
+                    <p>22ْ C</p>
+                    <p>71.6 ْ F</p>
+                </div>
+            </div>
+
+            <div class="col text-center border-end">
+                <h6 class="other-dayes">wednesday</h6>
+                <img class="other-imgs" src="./assets/images/Forecast/Cloud.png" alt="">
+                <div class="row">
+                    <p>22ْ C</p>
+                    <p>71.6 ْ F</p>
+                </div>
+            </div>
+
+            <div class="col text-center border-end">
+                <h6 class="other-dayes">thuseday</h6>
+                <img class="other-imgs" src="./assets/images/Forecast/Cloud.png" alt="">
+                <div class="row">
+                    <p>22ْ C</p>
+                    <p>71.6 ْ F</p>
+                </div>
+            </div>
+
+            <div class="col text-center">
+                <h6 class="other-dayes">friday</h6>
+                <img class="other-imgs" src="./assets/images/Forecast/RainThunder.png" alt="">
+                <div class="row">
+                    <p>22ْ C</p>
+                    <p>71.6 ْ F</p>
+                </div>
+            </div>
+        </div>
+        </section>
+    </div>
+    <script src="./assets/bootstrap-5.0.2/dist/js/bootstrap.bundle.js"></script>
+    <script>
+        let weather = [
+            {id:0, day:'sunday', image:'./assets/images/Forecast/sun.png'},
+            {id:1, day:'monday', image:'./assets/images/Forecast/SunCloud.png'},
+            {id:2, day:'tuseday', image:'./assets/images/Forecast/sun.png'},
+            {id:3, day:'wednesday', image:'./assets/images/Forecast/sun.png'},
+            {id:4, day:'thyseday', image:'./assets/images/Forecast/Cloud.png'},
+            {id:5, day:'friday', image:'./assets/images/Forecast/RainThunder.png'}
+        ];
+
+        let otherDays =document.getElementsByClassName('other-dayes')
+        let otherImage =document.getElementsByClassName('other-imgs')
+
+        let date =new Date();
+        let today=date.getDay();
+        let currentDay = document.getElementById('current-day');
+        let _currentDay = document.getElementsByClassName('current-day')[0];
+        let currentImage = document.getElementById('current-img');
+        for(let i=0; i<weather.length; i++){
+
+            if(today==weather[i].id){
+                currentDay.innerHTML =weather[i].day;
+                _currentDay.innerHTML =weather[i].day;
+                currentImage.src=weather[i].image;
+               weather=[... weather.slice(today+1), ... weather.slice(0,today)] ;
+               for(let j=0; j<weather.length ; j++){
+                otherDays[j].innerHTML=weather[j].day;
+                otherImage[j].src=weather[j].image;
+            }
+                
+            } 
+        
+
+        }
+        
+
+        console.log(today)
+    </script>
+
+</body>
+</html>
